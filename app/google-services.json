@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "409012315366",
+    "project_id": "cibs-54cc1",
+    "storage_bucket": "cibs-54cc1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409012315366:android:de6d49ed00e45fc9c6c727",
+        "android_client_info": {
+          "package_name": "cm.pam.cibs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409012315366-njrd66dgmjso4epedi0l3dqgakfffkii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAv58k-U1yt8YNAJb6UehM-_PE7rKdz5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409012315366-njrd66dgmjso4epedi0l3dqgakfffkii.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

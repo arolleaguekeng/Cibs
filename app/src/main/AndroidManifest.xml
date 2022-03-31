@@ -10,7 +10,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cibs">
         <activity
+            android:name=".CategorySearch"
+            android:exported="false" />
+        <activity
+            android:name=".Splash"
+            android:exported="false" />
+        <activity
+            android:name=".UserProfile"
+            android:exported="false" />
+        <activity
+            android:name=".CategoriesList"
+            android:exported="false" />
+        <activity
+            android:name=".MessageWelcomePage"
+            android:exported="false" />
+        <activity
+            android:name=".LoginSecondStape"
+            android:exported="false" />
+        <activity
+            android:name=".LoginFirstStape"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomePage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

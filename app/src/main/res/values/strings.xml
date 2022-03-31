@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Cibs</string>
+
+
+    <!--category list strings-->
+    <string name="btn">Login</string>
+    <string name="create">Create account </string>
+    <string name="password">Password</string>
+    <string name="chine">Chine</string>
+    <string name="traditionnel">Traditionnel</string>
+    <string name="chinois">Chinois</string>
 </resources>
