@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_my_profile.xml" value="0.4256198347107438" />
+        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_categories_list.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_my_profile.xml" value="0.18" />
+        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_user_edit_profile.xml" value="0.1" />
+        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_user_profile.xml" value="0.20520833333333333" />
         <entry key="..\:/projet/cibs/app/src/main/res/drawable-v24/cercle.xml" value="0.1345" />
         <entry key="..\:/projet/cibs/app/src/main/res/drawable-v24/ic_search.xml" value="0.1345" />
         <entry key="..\:/projet/cibs/app/src/main/res/layout/activity_categories_list.xml" value="0.10778985507246377" />

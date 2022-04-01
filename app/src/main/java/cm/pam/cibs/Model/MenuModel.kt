@@ -8,5 +8,5 @@ class MenuModel(var Name: String,
                 var Saveur : String,
                 var NutritifApport : String,
                 var Note : Float,
-                var Publication : MutableList<PublicationModel> ) {
+                var Publication : MutableList<PublicationModel>) {
 }
