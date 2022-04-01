@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cibs">
         <activity
+            android:name=".My_Profile"
+            android:exported="false" />
+        <activity
             android:name=".CategorySearch"
             android:exported="false" />
         <activity
