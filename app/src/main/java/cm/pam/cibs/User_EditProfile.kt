@@ -7,7 +7,6 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.set
 import cm.pam.cibs.Model.ProfileModel
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -149,8 +148,6 @@ class User_EditProfile : AppCompatActivity() {
         email.setText(_EMAIL)
         money.setText(_MONEY)
 
-       var profile=ProfileModel(_USERNAME,_PASSWORD,_EMAIL, money.toString(), 1,null)
-        ref.setValue(profile)
     }
     fun Update(view:View){
         if(IsUsernameChanged()&&IsPasswordChanged()&&IsEmailChanged()&&IsMoneyChanged()){
@@ -166,7 +163,7 @@ class User_EditProfile : AppCompatActivity() {
 
     private fun IsUsernameChanged(): Boolean {
         if(!_USERNAME.equals(username.text.toString())){
-            ref.child(_USERNAME).setValue(username.text.toString())
+            ref.child("userName").setValue(username.text.toString())
             _USERNAME=username.text.toString()
             return true
         }else{
@@ -175,7 +172,7 @@ class User_EditProfile : AppCompatActivity() {
     }
     private fun IsPasswordChanged(): Boolean {
         if(!_PASSWORD.equals(password.text.toString())){
-            ref.child(_PASSWORD).setValue(password.text.toString())
+            ref.child("password").setValue(password.text.toString())
             _PASSWORD=password.text.toString()
             return true
         }else{
@@ -184,7 +181,7 @@ class User_EditProfile : AppCompatActivity() {
     }
     private fun IsEmailChanged(): Boolean {
         if(!_EMAIL.equals(email.text.toString())){
-            ref.child(_EMAIL).setValue(email.text.toString())
+            ref.child("email").setValue(email.text.toString())
             _EMAIL=email.text.toString()
             return true
         }else{
@@ -193,7 +190,7 @@ class User_EditProfile : AppCompatActivity() {
     }
     private fun IsMoneyChanged(): Boolean {
         if(!_MONEY.equals(money.text.toString())){
-            ref.child(_MONEY).setValue(money.text.toString())
+            ref.child("money").setValue(money.text.toString())
             _MONEY=money.text.toString()
             return true
         }else{
