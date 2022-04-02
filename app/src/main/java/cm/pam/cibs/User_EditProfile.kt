@@ -1,13 +1,13 @@
 package cm.pam.cibs
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import cm.pam.cibs.Model.ProfileModel
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -143,10 +143,10 @@ class User_EditProfile : AppCompatActivity() {
         _FOLLOWING=intent.getStringExtra("Following").toString()
         _FAVOURITE=intent.getStringExtra("Favourite").toString()
 
-        username.setText(_USERNAME)
-        password.setText(_PASSWORD)
-        email.setText(_EMAIL)
-        money.setText(_MONEY)
+        username.text=_USERNAME as Editable
+        password.text=_PASSWORD as Editable
+        email.text=_EMAIL as Editable
+        money.text=_MONEY as Editable
 
     }
     fun Update(view:View){
