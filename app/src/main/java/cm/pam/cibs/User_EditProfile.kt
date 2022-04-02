@@ -1,109 +1,191 @@
 package cm.pam.cibs
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import cm.pam.cibs.Model.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+
 
 class User_EditProfile : AppCompatActivity() {
-    lateinit var users:MutableList<UserModel>
+
+    val database = Firebase.database
+    //reference dans la base de donnée
+    val ref=database.getReference("Profiles")
+    var _USERNAME:String=TODO()
+    var _PASSWORD:String
+    var _EMAIL: String
+    var _MONEY:String
+    var _PHOTO:String
+    var _PUBlicATION:String
+    var _FOLLOWERS:String
+    var _FOLLOWING:String
+    var _FAVOURITE:String
+
+    var image:ImageView
+    var username:EditText
+    var email:EditText
+    var password:EditText
+    var money:EditText
+    var btnCancel:Button
+    var btnpicture:Button
+    var btnupdate:Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_edit_profile)
+        var intents= Intent(this, My_Profile::class.java)
+        //Valeurs
+         image=findViewById<ImageView>(R.id.ImgPicture)
+         username=findViewById<EditText>(R.id.txtUsername)
+         email=findViewById<EditText>(R.id.txtEmail)
+         password=findViewById<EditText>(R.id.txtPassword)
+         money=findViewById<EditText>(R.id.txtMoney)
+         btnupdate=findViewById<Button>(R.id.btnUpdate)
+         btnpicture=findViewById<Button>(R.id.btnAddPicture)
+         btnCancel=findViewById<Button>(R.id.btnCancel)
 
-        var username=findViewById<EditText>(R.id.txtUsername).text
-        var phoneNumber=findViewById<EditText>(R.id.txtPhone).text
-        var money=findViewById<EditText>(R.id.txtMoney).text
-        var image=findViewById<ImageView>(R.id.ImgPicture).id
-        var btnImage=findViewById<Button>(R.id.btnAddPicture)
+       //ShowData when we enter
+        ShowAllProfile()
 
-        var defaultuser:UserModel=CreateUser(username.toString(),phoneNumber.toString(),money.toString(),image,null,null,null,null)
-        var user1:UserModel=CreateUser("Arolle","5553535","100000",1,null,1,null,1)
-        users.add(1,user1)
-        users.add(2,defaultuser)
+        btnCancel.setOnClickListener {
+            startActivity(intents)
+        }
+        btnpicture.setOnClickListener {
+
+        }
+        btnupdate.setOnClickListener {
+            Update(btnupdate)
+        }
 
     }
-     fun CreateUser(username:String,phoneNumber:String,money:String,photo:Int,numFollowers:Int?,numFollowing:Int?,numPub:Int?,numfavor:Int?):UserModel {
-            var user=UserModel(phoneNumber as Int,CreateProfile(username,money,photo,numPub,numFollowers,numFollowing,numfavor))
-        return user
-    }
-     fun CreateProfile(username: String,money: String,photo: Int,numFollowers:Int?,numFollowing:Int?,numPub:Int?,numfavor:Int?):ProfileModel{
-        var profile=ProfileModel(username,"","", money as Long,photo as Int,Pubs(numPub),followers(numFollowers),following(numFollowing),favor(numfavor))
+    /*fun CreateProfile(username:String,email:String,password:String,money:Long,picture:Int):ProfileModel{
+        var profile=ProfileModel(username,email,password,money,picture,null,null,null,null)
         return profile
     }
-     fun Pubs(numPub: Int?):MutableList<PublicationModel>?{
-        lateinit var pub:MutableList<PublicationModel>
-        var publi=PublicationModel(
-            null,
-            2,
-            CreateUser("Israel","698524956","20000",2,null,null,null,null),
-            null,
-            2,
-            2,
-            null
-        )
-        if(numPub==null){
-            return null
+    //Lire dans la base de données
+    fun showProfileDatabase(){
+        _USERNAME.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = snapshot.getValue<String>()
+                Log.d(TAG, "Value is: " + value)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+        _EMAIl.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = snapshot.getValue<String>()
+                Log.d(TAG, "Value is: " + value)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+        _PASSWORD.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = snapshot.getValue<String>()
+                Log.d(TAG, "Value is: " + value)
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+        _MONEY.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = snapshot.getValue<String>()
+                Log.d(TAG, "Value is: " + value)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+        _PHOTO.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = snapshot.getValue<String>()
+                Log.d(TAG, "Value is: " + value)
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+    }*/
+
+    fun ShowAllProfile(){
+        lateinit var intent:Intent
+        _USERNAME= intent.getStringExtra("Username").toString()
+        _PASSWORD= intent.getStringExtra("Password").toString()
+        _EMAIL= intent.getStringExtra("Email").toString()
+        _MONEY=intent.getStringExtra("Money").toString()
+        _PHOTO=intent.getStringExtra("Photo").toString()
+
+
+        username.setText(_USERNAME)
+        password.setText(_PASSWORD)
+        email.setText(_EMAIL)
+        money.setText(_MONEY)
+    }
+    fun Update(view:View){
+        if(IsUsernameChanged()||IsPasswordChanged()||IsEmailChanged()||IsMoneyChanged()){
+            Toast.makeText(this,"Data is changed",Toast.LENGTH_LONG).show()
         }
         else{
-            for(i in 0..numPub){
-                pub.add(i,publi)
-            }
-            return pub
+            Toast.makeText(this,"Data is same and cannot change",Toast.LENGTH_LONG).show()
         }
     }
-     fun followers(numFollowers: Int?):MutableList<UserModel>?{
-        lateinit var fol:MutableList<UserModel>
-        var follower=UserModel(
-            66682738,
-            CreateProfile("Paco","3211211",3,2,1,0,1)
-        )
-        if(numFollowers==null){
-            return null
-        }
-        else{
-            for(i in 0..numFollowers){
-                fol.add(i,follower)
-            }
-            return fol
+
+    private fun IsUsernameChanged(): Boolean {
+        if(!_USERNAME.equals(username.text.toString())){
+            ref.child(_USERNAME).setValue(username.text.toString())
+            _USERNAME=username.text.toString()
+            return true
+        }else{
+            return false
         }
     }
-     fun following(numFollowing: Int?):MutableList<UserModel>?{
-        lateinit var fol:MutableList<UserModel>
-        var follow=UserModel(
-            66682738,
-            CreateProfile("Paco","3211211",3,null,null,null,null)
-        )
-        if(numFollowing==null){
-            return null
-        }
-        else{
-            for(i in 0..numFollowing){
-                fol.add(i,follow)
-            }
-            return fol
+    private fun IsPasswordChanged(): Boolean {
+        if(!_PASSWORD.equals(password.text.toString())){
+            ref.child(_PASSWORD).setValue(password.text.toString())
+            _PASSWORD=username.text.toString()
+            return true
+        }else{
+            return false
         }
     }
-     fun favor(numfavor: Int?):MutableList<PublicationModel>?{
-        lateinit var fav:MutableList<PublicationModel>
-        var favori=PublicationModel(
-            null,
-            2,
-            CreateUser("Dumont","677777777","3000000",1,1,null,null,null),
-            null,
-            2,
-            2,
-            null
-        )
-        if(numfavor==null){
-            return null
+    private fun IsEmailChanged(): Boolean {
+        if(!_EMAIL.equals(email.text.toString())){
+            ref.child(_EMAIL).setValue(email.text.toString())
+            _EMAIL=username.text.toString()
+            return true
+        }else{
+            return false
         }
-        else{
-            for(i in 0..numfavor){
-                fav.add(1,favori)
-            }
-            return fav
+    }
+    private fun IsMoneyChanged(): Boolean {
+        if(!_MONEY.equals(money.text.toString())){
+            ref.child(_MONEY).setValue(money.text.toString())
+            _MONEY=username.text.toString()
+            return true
+        }else{
+            return false
         }
     }
 }

@@ -172,8 +172,8 @@
                         android:layout_gravity="center"
                         >
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnProfile"
+                        <Button
+                            android:id="@+id/btnEdit"
                             android:layout_width="150dp"
                             android:layout_height="59dp"
                             android:layout_alignParentLeft="true"
@@ -182,9 +182,7 @@
                             android:text="Edit Profile"
                             android:textAllCaps="false"
                             app:cornerRadius="5dp" />
-
-                        <com.google.android.material.button.MaterialButton
-
+                        <Button
                             android:id="@+id/btnSetting"
                             android:layout_width="150dp"
                             android:layout_height="59dp"
