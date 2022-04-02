@@ -17,14 +17,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            tools:ignore="MissingConstraints">
+            tools:ignore="MissingConstraints"
+            >
 
             <ImageView
                 android:id="@+id/back"
                 android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_back" />
+                android:src="@drawable/ic_back"
+                android:backgroundTint="@color/black"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -85,6 +87,7 @@
                     android:textAlignment="center"
                     android:textSize="11dp"
                     android:id="@+id/number"
+                    android:textColor="@color/black_transparent"
                     />
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -143,20 +146,24 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Reviews"
+                            android:textColor="@color/black_transparent"
                             android:layout_marginStart="32dp"
                             />
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textAlignment="center"
-                            android:text="Followers"/>
+                            android:text="Followers"
+                            android:textColor="@color/black_transparent"
+                            />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="32dp"
                             android:text="Following"
-                            android:textAlignment="viewEnd" />
+                            android:textAlignment="viewEnd"
+                            android:textColor="@color/black_transparent" />
                     </RelativeLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -172,7 +179,7 @@
                         android:layout_gravity="center"
                         >
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnEdit"
                             android:layout_width="150dp"
                             android:layout_height="59dp"
@@ -182,7 +189,8 @@
                             android:text="Edit Profile"
                             android:textAllCaps="false"
                             app:cornerRadius="5dp" />
-                        <Button
+
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnSetting"
                             android:layout_width="150dp"
                             android:layout_height="59dp"

@@ -5,11 +5,17 @@
       <map>
         <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_categories_list.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_category_search.xml" value="0.19427083333333334" />
+        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_home_page.xml" value="0.15443840579710144" />
         <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_info_users.xml" value="0.19427083333333334" />
         <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_login_second_stape.xml" value="0.20885416666666667" />
-        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_my_profile.xml" value="0.22" />
+        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_main.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_my_profile.xml" value="0.25" />
         <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_user_edit_profile.xml" value="0.22" />
         <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/activity_user_profile.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/item_category.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/item_friend.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/item_meal.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/ISRAEL_LEICANOR/Cibs/app/src/main/res/layout/item_search.xml" value="0.19114583333333332" />
         <entry key="..\:/projet/cibs/app/src/main/res/drawable-v24/cercle.xml" value="0.1345" />
         <entry key="..\:/projet/cibs/app/src/main/res/drawable-v24/ic_search.xml" value="0.1345" />
         <entry key="..\:/projet/cibs/app/src/main/res/layout/activity_categories_list.xml" value="0.10778985507246377" />

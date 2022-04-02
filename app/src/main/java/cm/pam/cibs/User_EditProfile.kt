@@ -7,6 +7,8 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.set
+import cm.pam.cibs.Model.ProfileModel
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -16,40 +18,41 @@ class User_EditProfile : AppCompatActivity() {
     val database = Firebase.database
     //reference dans la base de donnée
     val ref=database.getReference("Profiles")
-    var _USERNAME:String=TODO()
-    var _PASSWORD:String
-    var _EMAIL: String
-    var _MONEY:String
-    var _PHOTO:String
-    var _PUBlicATION:String
-    var _FOLLOWERS:String
-    var _FOLLOWING:String
-    var _FAVOURITE:String
+    lateinit var _USERNAME:String
+    lateinit var _PASSWORD:String
+    lateinit var _EMAIL: String
+    lateinit var _MONEY:String
+    lateinit var _PHOTO:String
+    lateinit var _PUBlicATION:String
+    lateinit var _FOLLOWERS:String
+    lateinit var _FOLLOWING:String
+    lateinit var _FAVOURITE:String
 
-    var image:ImageView
-    var username:EditText
-    var email:EditText
-    var password:EditText
-    var money:EditText
-    var btnCancel:Button
-    var btnpicture:Button
-    var btnupdate:Button
+    lateinit var image:ImageView
+    lateinit var username:EditText
+    lateinit var email:EditText
+    lateinit var password:EditText
+    lateinit var money:EditText
+    lateinit var btnCancel:Button
+    lateinit var btnpicture:Button
+    lateinit var btnupdate:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_edit_profile)
         var intents= Intent(this, My_Profile::class.java)
         //Valeurs
-         image=findViewById<ImageView>(R.id.ImgPicture)
-         username=findViewById<EditText>(R.id.txtUsername)
-         email=findViewById<EditText>(R.id.txtEmail)
-         password=findViewById<EditText>(R.id.txtPassword)
-         money=findViewById<EditText>(R.id.txtMoney)
-         btnupdate=findViewById<Button>(R.id.btnUpdate)
-         btnpicture=findViewById<Button>(R.id.btnAddPicture)
-         btnCancel=findViewById<Button>(R.id.btnCancel)
+         image=findViewById(R.id.ImgPicture)
+         username=findViewById(R.id.txtUsername)
+         email=findViewById(R.id.txtEmail)
+         password=findViewById(R.id.txtPassword)
+         money=findViewById(R.id.txtMoney)
+         btnupdate=findViewById(R.id.btnUpdate)
+         btnpicture=findViewById(R.id.btnAddPicture)
+         btnCancel=findViewById(R.id.btnCancel)
 
-       //ShowData when we enter
+
+        //ShowData when we enter
         ShowAllProfile()
 
         btnCancel.setOnClickListener {
@@ -130,22 +133,31 @@ class User_EditProfile : AppCompatActivity() {
     }*/
 
     fun ShowAllProfile(){
-        lateinit var intent:Intent
-        _USERNAME= intent.getStringExtra("Username").toString()
-        _PASSWORD= intent.getStringExtra("Password").toString()
-        _EMAIL= intent.getStringExtra("Email").toString()
-        _MONEY=intent.getStringExtra("Money").toString()
-        _PHOTO=intent.getStringExtra("Photo").toString()
-
+         var intent:Intent=getIntent()
+        _USERNAME= intent.getStringExtra("userName").toString()
+        _PASSWORD= intent.getStringExtra("password").toString()
+        _EMAIL= intent.getStringExtra("email").toString()
+        _MONEY=intent.getStringExtra("money").toString()
+        _PHOTO=intent.getStringExtra("profilePicture").toString()
+        _PUBlicATION=intent.getStringExtra("Publications").toString()
+        _FOLLOWERS=intent.getStringExtra("Followers").toString()
+        _FOLLOWING=intent.getStringExtra("Following").toString()
+        _FAVOURITE=intent.getStringExtra("Favourite").toString()
 
         username.setText(_USERNAME)
         password.setText(_PASSWORD)
         email.setText(_EMAIL)
         money.setText(_MONEY)
+
+       var profile=ProfileModel(_USERNAME,_PASSWORD,_EMAIL, money.toString(), 1,null)
+        ref.setValue(profile)
     }
     fun Update(view:View){
-        if(IsUsernameChanged()||IsPasswordChanged()||IsEmailChanged()||IsMoneyChanged()){
+        if(IsUsernameChanged()&&IsPasswordChanged()&&IsEmailChanged()&&IsMoneyChanged()){
             Toast.makeText(this,"Data is changed",Toast.LENGTH_LONG).show()
+        }
+        else if(IsUsernameChanged()||IsPasswordChanged()||IsEmailChanged()||IsMoneyChanged()){
+            Toast.makeText(this,"Data is changed not for all",Toast.LENGTH_LONG).show()
         }
         else{
             Toast.makeText(this,"Data is same and cannot change",Toast.LENGTH_LONG).show()
@@ -164,7 +176,7 @@ class User_EditProfile : AppCompatActivity() {
     private fun IsPasswordChanged(): Boolean {
         if(!_PASSWORD.equals(password.text.toString())){
             ref.child(_PASSWORD).setValue(password.text.toString())
-            _PASSWORD=username.text.toString()
+            _PASSWORD=password.text.toString()
             return true
         }else{
             return false
@@ -173,7 +185,7 @@ class User_EditProfile : AppCompatActivity() {
     private fun IsEmailChanged(): Boolean {
         if(!_EMAIL.equals(email.text.toString())){
             ref.child(_EMAIL).setValue(email.text.toString())
-            _EMAIL=username.text.toString()
+            _EMAIL=email.text.toString()
             return true
         }else{
             return false
@@ -182,7 +194,7 @@ class User_EditProfile : AppCompatActivity() {
     private fun IsMoneyChanged(): Boolean {
         if(!_MONEY.equals(money.text.toString())){
             ref.child(_MONEY).setValue(money.text.toString())
-            _MONEY=username.text.toString()
+            _MONEY=money.text.toString()
             return true
         }else{
             return false
