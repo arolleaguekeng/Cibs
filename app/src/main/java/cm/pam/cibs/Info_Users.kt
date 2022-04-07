@@ -72,4 +72,5 @@ class Info_Users : AppCompatActivity() {
         LblFollowers.setText(_FOLLOWERS)
         LblFollowing.setText(_FOLLOWING)
     }
+    
 }

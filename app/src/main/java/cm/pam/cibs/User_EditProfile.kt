@@ -1,14 +1,19 @@
 package cm.pam.cibs
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
 
@@ -65,71 +70,6 @@ class User_EditProfile : AppCompatActivity() {
         }
 
     }
-    /*fun CreateProfile(username:String,email:String,password:String,money:Long,picture:Int):ProfileModel{
-        var profile=ProfileModel(username,email,password,money,picture,null,null,null,null)
-        return profile
-    }
-    //Lire dans la base de données
-    fun showProfileDatabase(){
-        _USERNAME.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = snapshot.getValue<String>()
-                Log.d(TAG, "Value is: " + value)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-        })
-        _EMAIl.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = snapshot.getValue<String>()
-                Log.d(TAG, "Value is: " + value)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-        })
-        _PASSWORD.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = snapshot.getValue<String>()
-                Log.d(TAG, "Value is: " + value)
-            }
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-        })
-        _MONEY.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = snapshot.getValue<String>()
-                Log.d(TAG, "Value is: " + value)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-        })
-        _PHOTO.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = snapshot.getValue<String>()
-                Log.d(TAG, "Value is: " + value)
-            }
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-        })
-    }*/
 
     fun ShowAllProfile(){
          var intent:Intent=getIntent()
@@ -143,10 +83,22 @@ class User_EditProfile : AppCompatActivity() {
         _FOLLOWING=intent.getStringExtra("Following").toString()
         _FAVOURITE=intent.getStringExtra("Favourite").toString()
 
-        username.text=_USERNAME as Editable
-        password.text=_PASSWORD as Editable
-        email.text=_EMAIL as Editable
-        money.text=_MONEY as Editable
+
+        /*val refname=database.getReference("Profiles").child("userName").get()
+        val refemail=database.getReference("Profiles").child("email").get()
+        val refpassword=database.getReference("Profiles").child("password").get()
+        val refmoney=database.getReference("Profiles").child("money").get()*/
+
+
+        /*username.setText(refname.toString())
+        password.setText(refemail.toString())
+        email.setText(refpassword.toString())
+        money.setText(refmoney.toString())*/
+
+        username.setText(_USERNAME)
+        password.setText(_PASSWORD)
+        email.setText(_EMAIL)
+        money.setText(_MONEY)
 
     }
     fun Update(view:View){
@@ -197,4 +149,23 @@ class User_EditProfile : AppCompatActivity() {
             return false
         }
     }
+    fun getData(){
+        ref.addValueEventListener(object: ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = snapshot.getValue<String>()
+                Log.d(TAG, "Value is: " + value)
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+
+        })
+    }
 }
+
+
